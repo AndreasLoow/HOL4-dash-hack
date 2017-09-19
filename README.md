@@ -6,7 +6,7 @@ Make sure that you are in the `help` directory in your HOL4 directory:
 
     python3 -m venv venv
     source ./venv/bin/activate
-    pip install BeautifulSoup4 lxml
+    pip install BeautifulSoup4 html5lib
     # If you cloned this repository directly to the help directory:
     ./HOL4-dash-hack/dashgen.py
 

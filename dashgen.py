@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Required packages: BeautifulSoup4 lxml
+# Required packages: BeautifulSoup4 html5lib
 
 import shutil
 import sqlite3
@@ -13,7 +13,7 @@ def scrape_index(path, ty):
     ret = []
 
     with open(path) as fp:
-        tree = BeautifulSoup(fp, "lxml")
+        tree = BeautifulSoup(fp, "html5lib")
 
         for e in tree.find_all("li"):
             bs = e.find_all("b")
