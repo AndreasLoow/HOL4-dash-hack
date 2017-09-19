@@ -4,6 +4,7 @@
 
 import shutil
 import sqlite3
+import sys
 import os
 
 from bs4 import BeautifulSoup
@@ -33,6 +34,12 @@ def copy_and_replace_str(src, dst, needle, repstr):
     with open(dst, "w") as fw:
         fw.write(fc)
 
+# Sanity check
+cwd = os.path.realpath(os.getcwd())
+dirname = os.path.basename(cwd)
+if dirname != "help":
+    print("You must run this script from the help directory in your HOL4 installation.")
+    sys.exit(1)
 
 print("Copying HTML files (1)...")
 # Directory must not exists
@@ -42,7 +49,7 @@ print("Copying HTML files (2)...")
 # Need to hack some links to "Docfiles"
 #shutil.copytree("src-sml/htmlsigs/", "HOL4.docset/Contents/Resources/Documents")
 
-basedelpath = "file://" + os.path.dirname(os.path.realpath(__file__))
+basedelpath = "file://" + cwd
 delpath = basedelpath + "/Docfiles/HTML/"
 
 for f in os.listdir("src-sml/htmlsigs"):
@@ -56,7 +63,8 @@ shutil.copy("Docfiles/doc.css", "HOL4.docset/Contents/Resources/Documents")
 copy_and_replace_str("HOLindex.html", "HOL4.docset/Contents/Resources/Documents/index.html",
                      basedelpath + "/src-sml/htmlsigs/", "")
 
-shutil.copy("Info.plist", "HOL4.docset/Contents")
+scriptdir = os.path.dirname(os.path.realpath(__file__))
+shutil.copy(os.path.join(scriptdir, "Info.plist"), "HOL4.docset/Contents")
 
 print("Building index...")
 idx = []
