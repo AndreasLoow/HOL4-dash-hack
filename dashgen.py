@@ -2,12 +2,13 @@
 
 # Required packages: BeautifulSoup4 html5lib
 
+import os
 import shutil
 import sqlite3
 import sys
-import os
 
 from bs4 import BeautifulSoup
+
 
 def scrape_index(path, ty):
     ret = []
@@ -47,7 +48,7 @@ shutil.copytree("Docfiles/HTML", "HOL4.docset/Contents/Resources/Documents/Docfi
 
 print("Copying HTML files (2)...")
 # Need to hack some links to "Docfiles"
-#shutil.copytree("src-sml/htmlsigs/", "HOL4.docset/Contents/Resources/Documents")
+# shutil.copytree("src-sml/htmlsigs/", "HOL4.docset/Contents/Resources/Documents")
 
 basedelpath = "file://" + cwd
 delpath = basedelpath + "/Docfiles/HTML/"
