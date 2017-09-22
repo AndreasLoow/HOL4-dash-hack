@@ -66,6 +66,7 @@ copy_and_replace_str("HOLindex.html", "HOL4.docset/Contents/Resources/Documents/
 
 scriptdir = os.path.dirname(os.path.realpath(__file__))
 shutil.copy(os.path.join(scriptdir, "Info.plist"), "HOL4.docset/Contents")
+shutil.copy(os.path.join(scriptdir, "icon.png"), "HOL4.docset")
 
 print("Building index...")
 idx = []
