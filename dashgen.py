@@ -42,6 +42,10 @@ if dirname != "help":
     print("You must run this script from the help directory in your HOL4 installation.")
     sys.exit(1)
 
+if os.path.isdir("HOL4.docset"):
+    print("Removing previous docset folder...")
+    shutil.rmtree("HOL4.docset")
+
 print("Copying HTML files (1)...")
 # Directory must not exists
 shutil.copytree("Docfiles/HTML", "HOL4.docset/Contents/Resources/Documents/Docfiles")
